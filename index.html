@@ -1,18 +1,135 @@
----
-layout: default
-title: Inicio
----
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetSec & Cloud Dev Blog | Geovanny Alfonso Ferro Marin</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #0284c7;
+            --accent-hover: #0369a1;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container { max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
+        .site-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 2rem 0;
+            border-bottom: 4px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner { display: flex; flex-direction: column; gap: 0.8rem; }
+        .site-title { color: #ffffff; font-size: 1.85rem; font-weight: 700; text-decoration: none; }
+        .site-description { color: #94a3b8; font-size: 0.95rem; }
+        .site-nav { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.25rem; }
+        .site-nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.45rem 0.9rem;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.2s ease;
+        }
+        .site-nav a:hover { background: var(--accent); color: #ffffff; }
+        .main-content { flex: 1; padding: 2.5rem 1.5rem; }
+        .post-grid { display: grid; grid-template-columns: 1fr; gap: 2.2rem; }
+        .post-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+            scroll-margin-top: 160px;
+        }
+        .post-meta { font-size: 0.85rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .post-card h2 { color: var(--primary); margin-bottom: 0.85rem; font-size: 1.45rem; }
+        .post-image { width: 100%; max-height: 340px; object-fit: cover; border-radius: 8px; margin: 0.8rem 0 1.2rem 0; }
+        .post-card p { margin-bottom: 1rem; text-align: justify; }
+        .btn-top {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.45rem 1rem;
+            background-color: var(--accent);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .btn-top:hover { background-color: var(--accent-hover); }
+        .site-footer { background: var(--primary); color: #94a3b8; text-align: center; padding: 1.5rem 0; font-size: 0.85rem; margin-top: 3rem; }
+    </style>
+</head>
+<body id="inicio">
+    <header class="site-header">
+        <div class="container header-inner">
+            <div>
+                <a href="#inicio" class="site-title">NetSec & Cloud Dev Blog</a>
+                <p class="site-description">Bitácora técnica sobre Desarrollo de Aplicaciones en Red, Protocolos y Ciberseguridad — Por Geovanny Alfonso Ferro Marin</p>
+            </div>
+            <nav class="site-nav">
+                <a href="#inicio">Inicio</a>
+                <a href="#post-1">1. HTTP/3 & QUIC</a>
+                <a href="#post-2">2. Seguridad APIs (Zero Trust)</a>
+                <a href="#post-3">3. Microservicios & Contenedores</a>
+            </nav>
+        </div>
+    </header>
 
-<section class="post-grid">
-    {% for post in site.posts %}
-    <article class="post-card">
-        <div class="post-meta">{{ post.date | date: "%d/%m/%Y" }} &bull; {{ post.categories | join: ", " }}</div>
-        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-        {% if post.image %}
-        <img src="{{ post.image }}" alt="{{ post.title }}" class="post-image">
-        {% endif %}
-        <p>{{ post.excerpt | strip_html | truncatewords: 45 }}</p>
-        <a href="{{ post.url | relative_url }}" class="btn-read">Leer artículo completo &rarr;</a>
-    </article>
-    {% endfor %}
-</section>
+    <main class="container main-content">
+        <section class="post-grid">
+            <article id="post-1" class="post-card">
+                <div class="post-meta">Entrada 1 &bull; Arquitectura de Red y Protocolos</div>
+                <h2>Evolución de los protocolos web: De HTTP/1.1 a HTTP/3 sobre QUIC</h2>
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80" alt="Infraestructura de servidores de red" class="post-image">
+                <p>En el desarrollo de aplicaciones en red modernas, la latencia del protocolo de transporte determina directamente el rendimiento percibido por el usuario final. Durante años, HTTP/1.1 y HTTP/2 operaron sobre TCP, lo que introdujo el problema conocido como <strong>Head-of-Line (HoL) blocking</strong> en la capa de transporte: si un único paquete TCP se pierde en tránsito, todos los flujos multiplexados deben esperar su retransmisión.</p>
+                <p>La llegada de <strong>HTTP/3</strong> resuelve este cuello de botella reemplazando TCP por <strong>QUIC</strong>, un protocolo de transporte construido sobre UDP. Al gestionar los flujos de manera independiente e integrar el handshake criptográfico TLS 1.3 dentro del propio establecimiento de conexión (1-RTT e incluso 0-RTT), reducimos drásticamente el tiempo de respuesta en redes móviles e inestables.</p>
+                <a href="#inicio" class="btn-top">&uarr; Volver arriba</a>
+            </article>
+
+            <article id="post-2" class="post-card">
+                <div class="post-meta">Entrada 2 &bull; Ciberseguridad en Aplicaciones</div>
+                <h2>Seguridad en APIs RESTful: Autenticación JWT, mTLS y enfoque Zero Trust</h2>
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1000&q=80" alt="Panel de monitoreo y ciberseguridad" class="post-image">
+                <p>Exponer servicios en red mediante arquitecturas orientadas a APIs exige abandonar el modelo tradicional de seguridad perimetral e implementar un esquema <strong>Zero Trust</strong>: ninguna petición es confiable por defecto, independientemente de si proviene de la red interna o externa.</p>
+                <p>En mis implementaciones de servicios distribuidos, combino tres capas esenciales: validación estricta de tokens firmados con <strong>JSON Web Tokens (JWT)</strong> de corta duración, políticas de control de acceso basado en roles (RBAC) en el API Gateway, y autenticación mutua mediante <strong>mTLS (Mutual TLS)</strong> para la comunicación máquina a máquina entre microservicios, mitigando así vectores de suplantación e inyección.</p>
+                <a href="#inicio" class="btn-top">&uarr; Volver arriba</a>
+            </article>
+
+            <article id="post-3" class="post-card">
+                <div class="post-meta">Entrada 3 &bull; Infraestructura y Despliegue</div>
+                <h2>Despliegue de Aplicaciones en Red con Contenedores y Proxies Inversos</h2>
+                <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=1000&q=80" alt="Código y despliegue en consola" class="post-image">
+                <p>El ciclo de vida de una aplicación en red requiere entornos reproducibles y aislamiento de procesos. Mediante la contenerización, empaquetamos el código de la aplicación junto con sus dependencias de red, garantizando paridad absoluta entre el entorno de desarrollo local y producción.</p>
+                <p>Para orquestar la entrada de tráfico hacia los contenedores, resulta fundamental situar un <strong>Proxy Inverso</strong> (como Nginx o Traefik) en el borde. Este componente centraliza la terminación TLS, aplica limitación de tasa (Rate Limiting) contra ataques de denegación de servicio y distribuye la carga entre las réplicas activas del backend de forma transparente.</p>
+                <a href="#inicio" class="btn-top">&uarr; Volver arriba</a>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Geovanny Alfonso Ferro Marin - Ingeniería Informática (UNIR) | Generado con Jekyll, HTML5 y CSS3.</p>
+        </div>
+    </footer>
+</body>
+</html>
