@@ -2,6 +2,6 @@ title: "NetSec & Cloud Dev Blog"
 description: "Bitácora técnica sobre Desarrollo de Aplicaciones en Red, Protocolos y Ciberseguridad"
 author: "Geovanny Alfonso Ferro Marin"
 baseurl: "/blog-redes-unir"
-url: "https://TU_USUARIO_AQUI.github.io"
+url: "https://geoferro.github.io"
 markdown: kramdown
 permalink: /:categories/:year/:month/:day/:title:output_ext
